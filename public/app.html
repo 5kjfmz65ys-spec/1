@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>لوحة التحكم — ردّاد AI</title><link rel="stylesheet" href="/styles.css"></head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar">
+    <div class="brand"><span class="brand-mark">ر</span><span>ردّاد AI</span></div>
+    <nav class="nav-menu" aria-label="القائمة الرئيسية">
+      <button class="nav-item active" data-view="dashboard"><span>⌂</span><span>الرئيسية</span></button>
+      <button class="nav-item" data-view="connections"><span>◉</span><span>ربط واتساب</span></button>
+      <button class="nav-item" data-view="inbox"><span>✉</span><span>المحادثات</span></button>
+      <button class="nav-item" data-view="assistant"><span>✦</span><span>الموظف الذكي</span></button>
+      <button class="nav-item" data-view="knowledge"><span>▤</span><span>قاعدة المعرفة</span></button>
+      <button class="nav-item" data-view="products"><span>◇</span><span>المنتجات</span></button>
+      <button class="nav-item" data-view="orders"><span>▣</span><span>الطلبات</span></button>
+      <button class="nav-item" data-view="team"><span>♙</span><span>الفريق</span></button>
+      <button class="nav-item" data-view="reports"><span>▥</span><span>التقارير</span></button>
+      <button class="nav-item" data-view="settings"><span>⚙</span><span>الإعدادات</span></button>
+    </nav>
+    <div class="sidebar-bottom"><div class="user-mini"><div class="avatar" id="userAvatar">ر</div><div><strong id="userName">...</strong><div class="small muted" id="userRole">...</div></div></div><button class="btn btn-ghost btn-sm" id="logoutButton" style="width:100%">تسجيل الخروج</button></div>
+  </aside>
+  <main class="app-main">
+    <header class="topbar"><div><strong id="organizationName">ردّاد AI</strong><div class="small muted" id="breadcrumb">الرئيسية</div></div><div class="topbar-actions"><button class="icon-btn" id="themeButton" aria-label="تغيير المظهر">◐</button><button class="icon-btn" data-view-direct="connections" aria-label="حالة واتساب">◉</button></div></header>
+    <section id="pageContent" class="page"><div class="skeleton" style="height:42px;width:260px;margin-bottom:22px"></div><div class="stats"><div class="skeleton" style="height:110px"></div><div class="skeleton" style="height:110px"></div><div class="skeleton" style="height:110px"></div><div class="skeleton" style="height:110px"></div></div></section>
+  </main>
+</div>
+<div id="modalRoot"></div><div id="toastContainer" class="toast-container"></div>
+<script src="/app.js"></script>
+</body></html>
