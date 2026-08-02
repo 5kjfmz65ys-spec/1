@@ -1,0 +1,21 @@
+{
+  "name": "reddad-ai",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "منصة عربية لإدارة خدمة العملاء وربط واتساب بالذكاء الاصطناعي",
+  "engines": {
+    "node": ">=22.5.0"
+  },
+  "scripts": {
+    "start": "node server.mjs",
+    "dev": "node --watch server.mjs",
+    "seed": "node scripts/seed.mjs",
+    "test": "node --test --test-reporter=spec",
+    "verify": "node scripts/verify.mjs",
+    "gateway": "node gateway/server.mjs"
+  },
+  "optionalDependencies": {
+    "@whiskeysockets/baileys": "^7.0.0-rc.9"
+  }
+}

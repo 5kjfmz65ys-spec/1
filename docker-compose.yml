@@ -1,0 +1,45 @@
+services:
+  app:
+    build: .
+    ports:
+      - "3080:3080"
+    environment:
+      PORT: 3080
+      APP_URL: http://localhost:3080
+      DATA_DIR: /app/data
+      ENCRYPTION_KEY: ${ENCRYPTION_KEY:?Set ENCRYPTION_KEY}
+      WA_GATEWAY_URL: http://gateway:3090
+      WA_GATEWAY_TOKEN: ${WA_GATEWAY_TOKEN:-}
+      INTERNAL_WEBHOOK_TOKEN: ${INTERNAL_WEBHOOK_TOKEN:-}
+      COOKIE_SECURE: "false"
+    volumes:
+      - app-data:/app/data
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://localhost:3080/api/health').then(r=>{if(!r.ok)process.exit(1)})"]
+      interval: 20s
+      timeout: 5s
+      retries: 5
+
+  gateway:
+    profiles: ["unofficial"]
+    build:
+      context: .
+      dockerfile: gateway/Dockerfile
+    ports:
+      - "3090:3090"
+    environment:
+      WA_GATEWAY_PORT: 3090
+      WA_GATEWAY_TOKEN: ${WA_GATEWAY_TOKEN:?Set WA_GATEWAY_TOKEN}
+      INTERNAL_WEBHOOK_TOKEN: ${INTERNAL_WEBHOOK_TOKEN:?Set INTERNAL_WEBHOOK_TOKEN}
+      CORE_BAILEYS_WEBHOOK_URL: http://app:3080/internal/baileys/events
+    volumes:
+      - gateway-data:/app/gateway/data
+    restart: unless-stopped
+    depends_on:
+      app:
+        condition: service_healthy
+
+volumes:
+  app-data:
+  gateway-data:
