@@ -1,0 +1,25 @@
+name: Deploy Company OS Preview
+
+on:
+  push:
+    branches:
+      - deploy-company-os-preview
+    paths:
+      - "company-os-preview/**"
+      - ".github/workflows/deploy-company-os-preview.yml"
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout preview branch
+        uses: actions/checkout@v4
+
+      - name: Deploy preview to Netlify
+        working-directory: company-os-preview
+        run: >-
+          npx -y @netlify/mcp@latest
+          --site-id 22f2dd27-ac8f-4322-b761-c2f193832f71
+          --proxy-path "https://netlify-mcp.netlify.app/proxy/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIn0..wUtaLHvIPb61wNh9.O81FFuE5ECNqQQWNxk93chUi_tnuQoefFqS4JgJWjeYEDlk0YGBGY_nwC8k9RSGElF_8fo6KedHFEUlnLzoq1Bz_e8Tinc6rfKkV-G-ReF_z3rUnAVI8PRUrb4TFCj3kJlPY-1AItyTuWEfeMtqRGvahb7B0VwWIqDQ553FzuoyL1I4U8QOfueV7CB6fblq9Jh1h387VCLcWn7j52jLZ5RsVE6CLQS9OUrIS-H2JUs6VlXF4G0UTEBAHGDDxLPyHNGx9ZQGiRysI8AW-Dpo1D-MTzkvhS9Sz-dr9coZW-6GrWlXkpnUKK-QJTwmLw_COVSWG0HbvFkslvi-nXBFUcLXU3CJv8hzWF4b3-A8_TrH6MPpJbG-_IgaM_WZNH5ma_KNfHVCn.g_uaD7REHW5zR3k_wYn82w"
