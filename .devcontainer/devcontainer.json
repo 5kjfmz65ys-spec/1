@@ -5,10 +5,19 @@
   "portsAttributes": {
     "3000": {
       "label": "Company OS",
-      "onAutoForward": "openBrowser"
+      "onAutoForward": "openBrowser",
+      "visibility": "private"
     }
   },
   "postCreateCommand": "bash .devcontainer/setup-company-os.sh",
   "postAttachCommand": "bash .devcontainer/start-company-os.sh",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "Prisma.prisma",
+        "dbaeumer.vscode-eslint"
+      ]
+    }
+  },
   "remoteUser": "node"
 }
