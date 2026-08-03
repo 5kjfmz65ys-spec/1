@@ -1,0 +1,14 @@
+{
+  "name": "Company OS Preview",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:1-20-bookworm",
+  "forwardPorts": [3000],
+  "portsAttributes": {
+    "3000": {
+      "label": "Company OS",
+      "onAutoForward": "openBrowser"
+    }
+  },
+  "postCreateCommand": "bash .devcontainer/setup-company-os.sh",
+  "postAttachCommand": "bash .devcontainer/start-company-os.sh",
+  "remoteUser": "node"
+}
